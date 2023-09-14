@@ -599,7 +599,11 @@ acutest_begin_test_line_(const struct acutest_test_* test)
             acutest_test_already_logged_++;
         } else if(acutest_verbose_level_ >= 1) {
             int n;
+#ifndef ACUTEST_SPACES
             char spaces[48];
+#else
+            char spaces[ACUTEST_SPACES];
+#endif
 
             n = acutest_colored_printf_(ACUTEST_COLOR_DEFAULT_INTENSIVE_, "Test %s... ", test->name);
             memset(spaces, ' ', sizeof(spaces));
