@@ -1674,6 +1674,10 @@ acutest_AmIBeingDebugged(void)
 }
 #endif
 
+#ifdef BEFORE_ACUTEST
+  extern void before_acutest(void);
+#endif
+
 int
 main(int argc, char** argv)
 {
