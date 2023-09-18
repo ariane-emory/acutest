@@ -1674,14 +1674,10 @@ acutest_AmIBeingDebugged(void)
 }
 #endif
 
-#if defined __GNUC__
-void  __attribute__((weak)) before_acutest(void) {}
-#endif
-              
 int
 main(int argc, char** argv)
 {
-#if defined __GNUC__
+#ifdef BEFORE_ACUTEST
   before_acutest();
 #endif
   
