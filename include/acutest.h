@@ -416,11 +416,7 @@ static void ACUTEST_ATTRIBUTE_(noreturn)
 acutest_exit_(int exit_code)
 {
   acutest_cleanup_();
-#ifndef ACUTEST_IGNORE_EXIT
-    exit(exit_code);
-#else
-    (void)exit_code;
-#endif
+  exit(exit_code);
 }
 
 #if defined ACUTEST_WIN_
@@ -1838,7 +1834,11 @@ main(int argc, char** argv)
 
     acutest_cleanup_();
 
+#ifdef ACUTEST_IGNORE_EXIT
+    return 0;
+#else
     return (acutest_stat_failed_units_ == 0) ? 0 : 1;
+#endif
 }
 
 
