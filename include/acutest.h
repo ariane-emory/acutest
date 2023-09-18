@@ -415,8 +415,10 @@ acutest_cleanup_(void)
 static void ACUTEST_ATTRIBUTE_(noreturn)
 acutest_exit_(int exit_code)
 {
+#ifdef ACUTEST_IGNORE_EXIT
     acutest_cleanup_();
     exit(exit_code);
+#endif
 }
 
 #if defined ACUTEST_WIN_
