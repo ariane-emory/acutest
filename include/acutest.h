@@ -1835,6 +1835,7 @@ main(int argc, char** argv)
     acutest_cleanup_();
 
 #ifdef ACUTEST_IGNORE_EXIT
+    printf("Ignoring exit code.");
     return 0;
 #else
     return (acutest_stat_failed_units_ == 0) ? 0 : 1;
